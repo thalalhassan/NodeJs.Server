@@ -2,8 +2,33 @@ const express =require('express');
 const chalk =require('chalk');
 const path=require('path')
 const app=express();// new optional
-const booksRouter = express.Router();
 
+var nav = [
+    {
+        link:'/books',
+        title:'Books'
+    },
+    {
+        link:'/authors',
+        title:'Authors'
+    },
+    {
+        link:'/addbook',
+        title:'AddBook'
+    },
+    {
+        link:'/login',
+        title:'LogIn'
+    }
+    ];
+
+
+
+
+const booksRouter = require('./src/routes/bookRoutes')(nav); // passing nav to booksRoutes.js (routerFunction)
+const authorsRouter = require('./src/routes/authorsRoutes')(nav);
+const addBookRouter = require('./src/routes/addBookRoutes')(nav);
+const signRouter = require('./src/routes/signRoutes')(nav);
 // app.use(express.static(path.join(__dirname,'public')));
 
 // app.get('/',(req,res)=>{
@@ -11,66 +36,25 @@ const booksRouter = express.Router();
 // }).listen(4000,()=>{
 //     console.log(`listening to port ${chalk.green(' 4000')}`)
 // });//or app.listen(3030)
-var books =[
-    {
-        title:'war and peace',
-        genre:'historic',
-        author:'Holman'
-    },{
-        title:'hello world',
-        genre:'logic',
-        author:'thr'
-    },{
-        title:'javaScript',
-        genre:'programming',
-        author:'Douglas Crockford'
-    },
-]
-
-
 
 app.use('/books',booksRouter);
+app.use('/authors',authorsRouter);
+app.use('/login',signRouter);
+app.use('/addbook',addBookRouter);
+
 app.use(express.static(path.join(__dirname,'public')));
 app.set('views','./src/views');
 app.set('view engine','ejs');
 
-booksRouter.route('/').get((req,res) => {
-    res.render('books',
-        {
-            nav:[
-                {
-                    link:'/books',
-                    title:'Books'
-                },
-                {
-                    link:'/authors',
-                    title:'Authors'
-                }
-                ],
-            title:'Books',
-            books
-        })
-    
-    })
-
 app.get('/',(req,res)=>{
 res.render('index',
     {
-        nav:[
-            {
-                link:'/books',
-                title:'Books'
-            },
-            {
-                link:'/authors',
-                title:'Authors'
-            }
-            ],
+        nav,
         title:'Library'
     })
 
 }).listen(4000,()=>{
-    console.log(`listening to port ${chalk.green(' 4000')}`)
+    console.log(`listening to port ${chalk.green('4000')}`)
 }); 
 
 
