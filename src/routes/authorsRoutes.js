@@ -4,18 +4,18 @@ const authorsRouter = express.Router();
 function router(nav){
     var authors =[
     {
-        title:'Shakespeare.',
-        genre:'historic',
-        img:'img/b1.jpg'
+        title:'Shakespeare',
+        country:'United Kingdom',
+        img:'img/ss.jpg'
     },{
         title:'Geoffrey Chaucer ',
-        genre:'logic',
-        img:'img/b2.jpg'
+        country:'London',
+        img:'img/gc.jpg'
 
     },{
         title:'George Orwell',
-        genre:'programming',
-        img:'img/b3.jpg'
+        country:'Motihari',
+        img:'img/go.jpg'
 
     },
 ]

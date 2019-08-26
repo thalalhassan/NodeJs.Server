@@ -93,27 +93,22 @@
           
         <div class="login-form" onsubmit="return  validateBook()">
             <form action="">
-              <label >Title</label>
-              <input type="text" class="form-control " id="bookTitle" autocomplete="off"
-                  placeholder="Title" required>
-              <label class="validateLabel" id="reqBookTitle"></label>
-              <br>
-              <label >Author</label>
-              <input type="text" class="form-control" id="bookAuthor" autocomplete="off"
-                  placeholder="Author" required>
-              <label class="validateLabel" id="reqBookAuthor"></label>
-              <br>
-              <label >Genre</label>
-              <input type="text" class="form-control" id="bookGenre" autocomplete="off"
-                  placeholder="Genre" required>
-              <label class="validateLabel" id="reqBookGenre"></label>
-              <br>
+                <label class="form-text">Name</label>
+                <input type="text" class="form-control " id="authorName" autocomplete="off"
+                    placeholder="Author Name" required>
+                <label class="validateLabel" id="reqAuthorName"></label>
+                <br>
+                <label class="form-text">Country</label>
+                <input type="text" class="form-control" id="authorCountry" autocomplete="off"
+                    placeholder="Country" required>
+                <label class="validateLabel" id="reqAuthorCountry"></label>
+                <br>
               <label >Image</label>
               <input type="file" accept="image/*" class="form-control" id="bookImage"
                   autocomplete="off" placeholder="Author Name" required>
               <label class="validateLabel" id="reqBookImage"></label>
               <br>
-                <input type="submit" value="Add Book">
+                <input type="submit" value="Submit">
             </form>
         </div>
           
@@ -171,6 +166,6 @@
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/addBookValidation.js"></script>
+    <script src="/js/addAuthorValidation.js"></script>
 	</body>
 </html>

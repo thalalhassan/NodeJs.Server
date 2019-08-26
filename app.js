@@ -14,7 +14,11 @@ var nav = [
     },
     {
         link:'/addbook',
-        title:'AddBook'
+        title:'Add Book'
+    },
+    {
+        link:'/addauthor',
+        title:'Add Author'
     },
     {
         link:'/login',
@@ -31,13 +35,17 @@ var nav = [
 
 const booksRouter = require('./src/routes/bookRoutes')(nav); // passing nav to booksRoutes.js (routerFunction)
 const authorsRouter = require('./src/routes/authorsRoutes')(nav);
+const addAuthorRouter = require('./src/routes/addAuthorRoutes')(nav);
 const addBookRouter = require('./src/routes/addBookRoutes')(nav);
 const signRouter = require('./src/routes/signRoutes')(nav);
+
+
 
 
 app.use('/books',booksRouter);
 app.use('/authors',authorsRouter);
 app.use('/login',signRouter);
+app.use('/addauthor',addAuthorRouter);
 app.use('/addbook',addBookRouter);
 
 app.use(express.static(path.join(__dirname,'public')));

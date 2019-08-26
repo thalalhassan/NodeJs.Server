@@ -1,7 +1,8 @@
 function validateBook() {
     if(checkTitle()==true && checkAuthor()==true && checkGenre()==true && checkImage()==true)
     {
-        alert('Success');
+        book= $('#bookTitle').val();
+        alert('successfully Added book : ' +book);
         return true;
     }
     else
