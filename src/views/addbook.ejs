@@ -93,15 +93,26 @@
           
         <div class="login-form">
             <form action="">
-                <label for="bname">Book Name</label>
-                <input type="text" id="bname" name="bookname" placeholder="Book name.." required>
-
-                <label for="aname">Author Name</label>
-                <input type="text" id="aname" name="authorname" placeholder="Author name.." required>
-            
-                <label for="genre">Genre</label>
-                <input type="text" id="genre" name="genre" placeholder="Genre.." required>
-
+              <label class="form-text">Title</label>
+              <input type="text" class="form-control " id="bookTitle" autocomplete="off"
+                  placeholder="Title" required>
+              <label class="validateLabel" id="reqBookTitle"></label>
+              <br>
+              <label class="form-text">Author</label>
+              <input type="text" class="form-control" id="bookAuthor" autocomplete="off"
+                  placeholder="Author" required>
+              <label class="validateLabel" id="reqBookAuthor"></label>
+              <br>
+              <label class="form-text">Genre</label>
+              <input type="text" class="form-control" id="bookGenre" autocomplete="off"
+                  placeholder="Genre" required>
+              <label class="validateLabel" id="reqBookGenre"></label>
+              <br>
+              <label class="form-text">Image</label>
+              <input type="file" accept="image/*" class="form-control" id="bookImage"
+                  autocomplete="off" placeholder="Author Name" required>
+              <label class="validateLabel" id="reqBookImage"></label>
+              <br>
                 <input type="submit" value="Submit">
             </form>
         </div>
@@ -159,6 +170,7 @@
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/addBookValidation.js"></script>
 	</body>
 </html>
