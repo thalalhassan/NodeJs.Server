@@ -19,6 +19,10 @@ var nav = [
     {
         link:'/login',
         title:'LogIn'
+    },
+    {
+        link:'/login/signup',
+        title:'SignUp'
     }
     ];
 
@@ -29,13 +33,7 @@ const booksRouter = require('./src/routes/bookRoutes')(nav); // passing nav to b
 const authorsRouter = require('./src/routes/authorsRoutes')(nav);
 const addBookRouter = require('./src/routes/addBookRoutes')(nav);
 const signRouter = require('./src/routes/signRoutes')(nav);
-// app.use(express.static(path.join(__dirname,'public')));
 
-// app.get('/',(req,res)=>{
-//     res.sendFile(__dirname+"/src/views/index.html");
-// }).listen(4000,()=>{
-//     console.log(`listening to port ${chalk.green(' 4000')}`)
-// });//or app.listen(3030)
 
 app.use('/books',booksRouter);
 app.use('/authors',authorsRouter);
