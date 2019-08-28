@@ -1,46 +1,49 @@
 const express=require('express');
 const booksRouter = express.Router();
+const bookData = require('../model/bookData.js')
 
 function router(nav){
-    var books =[
-    {
-        title:'war and peace',
-        genre:'historic',
-        author:'Holman',
-        img:'img/b1.jpg'
-    },{
-        title:'hello world',
-        genre:'logic',
-        author:'thr',
-        img:'img/b2.jpg'
-
-    },{
-        title:'javaScript',
-        genre:'programming',
-        author:'Douglas Crockford',
-        img:'img/b3.jpg'
-
-    },
-]
+    
 
 booksRouter.route('/').get((req,res) => {
-    res.render('books',
+   bookData.find().then((books)=>{ 
+       res.render('books',
         {
             nav,
             title:'Books',
             books
         })
+    });
     
 });
-
 booksRouter.route('/:id').get((req,res)=>{
     const id = req.params.id //to id value
+    bookData.findOne({_id:id}).then((book)=>{ 
     res.render('book',
     {
         nav,
         title:'single Book',
-        book:books[id]
-    })
+        book
+        })
+    });
+});
+booksRouter.route('/delete/:id').get((req,res)=>{
+    const id = req.params.id //to id value
+    bookData.deleteOne({_id:id}).then(()=>{ 
+    res.redirect('/books');
+    });
+});
+
+booksRouter.route('/edit/:id').get((req,res)=>{
+    const id = req.params.id //to id value
+    bookData.findOne({_id:id}).then((book)=>{ 
+        res.render('addbook',
+        {
+            nav,
+            title:'Edit Book',
+            book
+            })
+        });
 });
 
 return booksRouter;

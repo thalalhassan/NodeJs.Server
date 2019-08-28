@@ -6,7 +6,7 @@
 		<title><%=title%></title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -91,29 +91,29 @@
           
           
           
-        <div class="login-form" onsubmit="return  validateBook()">
-            <form action="">
+        <div class="login-form" >
+            <form method="GET" <% if(book) { action="addbook/add"  } else { action="addbook/edit" } %> >
               <label >Title</label>
-              <input type="text" class="form-control " id="bookTitle" autocomplete="off"
-                  placeholder="Title" required>
-              <label class="validateLabel" id="reqBookTitle"></label>
+              <input type="text" name="Title" class="form-control " id="bookTitle" autocomplete="off"
+                  placeholder="Title"  <% if(book) {%> value="<%=book.Title%>" <%} %> >   
+              <label class="validateLabel" id="reqBookTitle" ></label>
               <br>
               <label >Author</label>
-              <input type="text" class="form-control" id="bookAuthor" autocomplete="off"
-                  placeholder="Author" required>
+              <input type="text" name="Author"  class="form-control" id="bookAuthor" autocomplete="off"
+                  placeholder="Author" <% if(book) {%> value="<%=book.Author%>" <%} %> >
               <label class="validateLabel" id="reqBookAuthor"></label>
               <br>
               <label >Genre</label>
-              <input type="text" class="form-control" id="bookGenre" autocomplete="off"
-                  placeholder="Genre" required>
+              <input type="text" name="Genre" class="form-control" id="bookGenre" autocomplete="off"
+                  placeholder="Genre" <% if(book) {%> value="<%=book.Genre%>" <%} %>>
               <label class="validateLabel" id="reqBookGenre"></label>
               <br>
               <label >Image</label>
-              <input type="file" accept="image/*" class="form-control" id="bookImage"
-                  autocomplete="off" placeholder="Author Name" required>
+              <input type="file" accept="image/*" class="form-control" id="bookImage" name="bookImage"
+                  autocomplete="off" placeholder="Author Name" >
               <label class="validateLabel" id="reqBookImage"></label>
               <br>
-                <input type="submit" value="Add Book">
+              <% if(book) { %> <input type="submit" value="Edit Book">  <%} else {%>  <input type="submit" value="Add book"> <%} %>
             </form>
         </div>
           

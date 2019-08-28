@@ -59,8 +59,8 @@ res.render('index',
         title:'Library'
     })
 
-}).listen(4000,()=>{
-    console.log(`listening to port ${chalk.green('4000')}`)
+}).listen(3000,()=>{
+    console.log(`listening to port ${chalk.green('3000')}`)
 }); 
 
 
