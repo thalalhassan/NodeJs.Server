@@ -9,7 +9,7 @@ addBookRouter.route('/').get((req,res) => {
         {
             nav,
             title:'Add Book',
-
+            flag:0
             
         })
     
@@ -26,14 +26,16 @@ addBookRouter.route('/add').get((req,res) => {
     res.redirect('/books')    
 });
 
-addBookRouter.route('/edit').get((req,res) => {
-    var item={
+addBookRouter.route('/edit/:id').get((req,res) => {
+    const id = req.params.id 
+    bookData.updateOne({_id:id},{
         Title:req.param('Title'),
         Author:req.param('Author'),
         Genre:req.param('Genre')
-    }
-    var book = new bookData(item);
-    res.redirect('/books')    
+        },
+        ()=>{ 
+        res.redirect('/books')
+        });
 });
 
 

@@ -89,23 +89,24 @@
       <div class="panel">
         <div class="panel-body">
           
+
           
           
         <div class="login-form" >
-            <form method="GET" <% if(book) { action="addbook/add"  } else { action="addbook/edit" } %> >
+            <form method="GET" <% if(flag==1) {%> action="/addbook/edit/<%=book._id%>"  <%} else {%> action="addbook/add" <%} %> >
               <label >Title</label>
               <input type="text" name="Title" class="form-control " id="bookTitle" autocomplete="off"
-                  placeholder="Title"  <% if(book) {%> value="<%=book.Title%>" <%} %> >   
+                  placeholder="Title" required <% if(flag==1) {%> value="<%=book.Title%>" <%} %> >   
               <label class="validateLabel" id="reqBookTitle" ></label>
               <br>
               <label >Author</label>
               <input type="text" name="Author"  class="form-control" id="bookAuthor" autocomplete="off"
-                  placeholder="Author" <% if(book) {%> value="<%=book.Author%>" <%} %> >
+                  placeholder="Author" required<% if(flag==1) {%> value="<%=book.Author%>" <%} %> >
               <label class="validateLabel" id="reqBookAuthor"></label>
               <br>
               <label >Genre</label>
               <input type="text" name="Genre" class="form-control" id="bookGenre" autocomplete="off"
-                  placeholder="Genre" <% if(book) {%> value="<%=book.Genre%>" <%} %>>
+                  placeholder="Genre" required<% if(flag==1) {%> value="<%=book.Genre%>" <%} %>>
               <label class="validateLabel" id="reqBookGenre"></label>
               <br>
               <label >Image</label>
@@ -113,7 +114,7 @@
                   autocomplete="off" placeholder="Author Name" >
               <label class="validateLabel" id="reqBookImage"></label>
               <br>
-              <% if(book) { %> <input type="submit" value="Edit Book">  <%} else {%>  <input type="submit" value="Add book"> <%} %>
+              <% if(flag==1) { %> <input type="submit" value="Edit Book">  <%} else {%>  <input type="submit" value="Add book"> <%} %>
             </form>
         </div>
           

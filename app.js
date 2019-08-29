@@ -33,7 +33,7 @@ var nav = [
 
 
 
-const booksRouter = require('./src/routes/bookRoutes')(nav); // passing nav to booksRoutes.js (routerFunction)
+const booksRouter = require('./src/routes/bookRoutes')(nav);   // passing nav to booksRoutes.js (routerFunction)
 const authorsRouter = require('./src/routes/authorsRoutes')(nav);
 const addAuthorRouter = require('./src/routes/addAuthorRoutes')(nav);
 const addBookRouter = require('./src/routes/addBookRoutes')(nav);
@@ -59,8 +59,8 @@ res.render('index',
         title:'Library'
     })
 
-}).listen(3000,()=>{
-    console.log(`listening to port ${chalk.green('3000')}`)
+}).listen(4000,()=>{
+    console.log(`listening to port ${chalk.green('4000')}`)
 }); 
 
 

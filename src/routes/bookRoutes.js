@@ -34,17 +34,19 @@ booksRouter.route('/delete/:id').get((req,res)=>{
     });
 });
 
-booksRouter.route('/edit/:id').get((req,res)=>{
+booksRouter.route('/editbook/:id').get((req,res)=>{
     const id = req.params.id //to id value
     bookData.findOne({_id:id}).then((book)=>{ 
         res.render('addbook',
         {
             nav,
             title:'Edit Book',
-            book
+            book,
+            flag:1
             })
         });
 });
+
 
 return booksRouter;
 }
